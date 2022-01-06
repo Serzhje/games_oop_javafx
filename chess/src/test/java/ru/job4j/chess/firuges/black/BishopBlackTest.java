@@ -27,16 +27,16 @@ public class BishopBlackTest {
     @Test
     public void whenWayC1toG5() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        Cell []actuals = bishopBlack.way(Cell.G5);
-        Cell []expected = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
+        Cell[] actuals = bishopBlack.way(Cell.G5);
+        Cell[] expected = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
         assertArrayEquals(expected, actuals);
     }
 
     @Test
     public void whenWayA1toH8() {
         BishopBlack bishopBlack = new BishopBlack(Cell.A1);
-        Cell []actuals = bishopBlack.way(Cell.H8);
-        Cell []expected = {Cell.B2, Cell.C3, Cell.D4, Cell.E5, Cell.F6, Cell.G7, Cell.H8};
+        Cell[] actuals = bishopBlack.way(Cell.H8);
+        Cell[] expected = {Cell.B2, Cell.C3, Cell.D4, Cell.E5, Cell.F6, Cell.G7, Cell.H8};
         assertArrayEquals(expected, actuals);
     }
 

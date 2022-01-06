@@ -20,7 +20,7 @@ public class BishopBlack implements Figure {
 
     @Override
     public Cell[] way(Cell dest) {
-        if(!isDiagonal(position, dest)) {
+        if (!isDiagonal(position, dest)) {
             throw new ImpossibleMoveException(
                     String.format("Could not way by diagonal from %s to %s", position, dest)
             );
@@ -29,37 +29,32 @@ public class BishopBlack implements Figure {
         Cell[] steps = new Cell[size];
         int deltaX = position().getX();
         int deltaY = position().getY();
-        int i = 0;
-        for(; i < size; i++) {
-            if(deltaX < dest.getX() && deltaY > dest.getY()) {
+        for (int i = 0; i < size; i++) {
+            if (deltaX < dest.getX() && deltaY > dest.getY()) {
                 deltaX++;
                 deltaY--;
-            }
-            else if(deltaX < dest.getX() && deltaY < dest.getY()) {
+            } else if (deltaX < dest.getX() && deltaY < dest.getY()) {
                 deltaX++;
                 deltaY++;
-            }
-            else if (deltaX > dest.getX() && deltaY < dest.getY()) {
+            } else if (deltaX > dest.getX() && deltaY < dest.getY()) {
                 deltaX--;
                 deltaY++;
-            }
-            else if (deltaX > dest.getX() && deltaY > dest.getY()) {
+            } else if (deltaX > dest.getX() && deltaY > dest.getY()) {
                 deltaX--;
                 deltaY--;
-            }
-            else if (deltaX == dest.getX() && deltaY == dest.getY()){
+            } else if (deltaX == dest.getX() && deltaY == dest.getY()) {
                 steps[i] = Cell.findBy(deltaX, deltaY);
                 break;
             }
             steps[i] = Cell.findBy(deltaX, deltaY);
         }
-        return Arrays.copyOf(steps, i);
+        return Arrays.copyOf(steps, Math.abs(position().getX() - dest.getX()));
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
         boolean result = false;
-        if(Math.abs(source.getX() - dest.getX()) ==
-                Math.abs(source.getY() - dest.getY())) {
+        if (Math.abs(source.getX() - dest.getX())
+                == Math.abs(source.getY() - dest.getY())) {
             result = true;
         }
         return result;
